@@ -1,0 +1,69 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "跨语种戏剧演出版本台领域事件",
+  "type": "object",
+  "required": [
+    "event_id",
+    "event_type",
+    "aggregate_type",
+    "aggregate_id",
+    "occurred_at",
+    "version",
+    "payload"
+  ],
+  "properties": {
+    "event_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "event_type": {
+      "type": "string",
+      "enum": [
+        "SCRIPT_REGISTERED",
+        "CONSENT_RECORDED",
+        "VERSION_APPROVED",
+        "RUN_LOCKED",
+        "ERRATA_ISSUED"
+      ]
+    },
+    "aggregate_type": {
+      "type": "string",
+      "enum": [
+        "play_script",
+        "performance_run",
+        "consent_record",
+        "release_version"
+      ]
+    },
+    "aggregate_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "occurred_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "version": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "payload": {
+      "type": "object"
+    }
+  },
+  "payload_required_by_event": {
+    "CONSENT_RECORDED": [
+      "subject_ref",
+      "scope"
+    ],
+    "RUN_LOCKED": [
+      "script_version",
+      "starts_at"
+    ],
+    "ERRATA_ISSUED": [
+      "supersedes",
+      "reason"
+    ]
+  },
+  "additionalProperties": false
+}
