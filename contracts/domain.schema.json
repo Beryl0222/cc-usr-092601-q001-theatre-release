@@ -21,9 +21,17 @@
       "enum": [
         "SCRIPT_REGISTERED",
         "CONSENT_RECORDED",
+        "CONSENT_WITHDRAWN",
+        "VERSION_PROPOSED",
+        "VERSION_SIGNED",
         "VERSION_APPROVED",
+        "REHEARSAL_CONFIRMED",
+        "RUN_PLANNED",
         "RUN_LOCKED",
-        "ERRATA_ISSUED"
+        "RUN_ADJUSTED",
+        "RUN_RECEIPTED",
+        "ERRATA_ISSUED",
+        "DISPUTE_OPENED"
       ]
     },
     "aggregate_type": {
@@ -32,7 +40,8 @@
         "play_script",
         "performance_run",
         "consent_record",
-        "release_version"
+        "release_version",
+        "dispute"
       ]
     },
     "aggregate_id": {
@@ -52,17 +61,74 @@
     }
   },
   "payload_required_by_event": {
+    "SCRIPT_REGISTERED": [
+      "title",
+      "language",
+      "segments"
+    ],
     "CONSENT_RECORDED": [
       "subject_ref",
       "scope"
     ],
+    "CONSENT_WITHDRAWN": [
+      "consent_id",
+      "subject_ref"
+    ],
+    "VERSION_PROPOSED": [
+      "script_id",
+      "target_language",
+      "source_fingerprint",
+      "content_fingerprint",
+      "proposer_id"
+    ],
+    "VERSION_SIGNED": [
+      "version_id",
+      "role",
+      "actor_id"
+    ],
+    "VERSION_APPROVED": [
+      "version_id",
+      "final_approver_id"
+    ],
+    "REHEARSAL_CONFIRMED": [
+      "version_id",
+      "subject_ref",
+      "confirmer_id",
+      "segment_ids"
+    ],
+    "RUN_PLANNED": [
+      "script_id",
+      "starts_at",
+      "lock_deadline",
+      "audience_languages"
+    ],
     "RUN_LOCKED": [
+      "version_id",
       "script_version",
-      "starts_at"
+      "starts_at",
+      "selections"
+    ],
+    "RUN_ADJUSTED": [
+      "run_id",
+      "actor_id",
+      "changes"
+    ],
+    "RUN_RECEIPTED": [
+      "run_id",
+      "receipt_id",
+      "content_fingerprint",
+      "actor_id"
     ],
     "ERRATA_ISSUED": [
       "supersedes",
+      "replacement_version_id",
       "reason"
+    ],
+    "DISPUTE_OPENED": [
+      "receipt_id",
+      "run_id",
+      "existing_fingerprint",
+      "conflicting_fingerprint"
     ]
   },
   "additionalProperties": false

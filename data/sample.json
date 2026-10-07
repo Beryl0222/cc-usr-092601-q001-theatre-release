@@ -2,8 +2,25 @@
   "event_id": "092601-001-sample-001",
   "event_type": "SCRIPT_REGISTERED",
   "aggregate_type": "play_script",
-  "aggregate_id": "theatre_release-001",
+  "aggregate_id": "script-001",
   "occurred_at": "2026-09-25T10:00:00+08:00",
   "version": 1,
-  "payload": {}
+  "payload": {
+    "title": "闽宁纪事",
+    "language": "zh-CN",
+    "segments": [
+      {
+        "segment_id": "seg-001",
+        "kind": "line",
+        "subject_ref": null,
+        "text": "村口的戏台搭起来了。"
+      },
+      {
+        "segment_id": "seg-002",
+        "kind": "testimony",
+        "subject_ref": "li-anhua",
+        "text": "我是一九九七年从西海固搬下来的。"
+      }
+    ]
+  }
 }

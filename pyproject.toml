@@ -1,5 +1,5 @@
 [project]
 name = "theatre-release"
 version = "0.1.0"
-description = "跨语种戏剧演出版本台领域契约"
+description = "跨语种戏剧演出版本台：授权、三会签、场次锁定、勘误链与演出回执"
 requires-python = ">=3.11"
