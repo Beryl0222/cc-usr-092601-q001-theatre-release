@@ -20,9 +20,24 @@
       "type": "string",
       "enum": [
         "SCRIPT_REGISTERED",
+        "STAGE_ADVANCED",
+        "SEGMENT_ADDED",
+        "FACT_CONFIRMED",
         "CONSENT_RECORDED",
+        "CONSENT_WITHDRAWN",
+        "TRANSLATION_SUBMITTED",
+        "NOTE_ADDED",
+        "VERSION_SUBMITTED",
+        "VERSION_SIGNED",
         "VERSION_APPROVED",
+        "REHEARSAL_CONFIRMED",
+        "RUN_SCHEDULED",
+        "LANGUAGE_REQUESTED",
         "RUN_LOCKED",
+        "RUN_REVISED",
+        "LIVE_CHANGE_RECORDED",
+        "RECEIPT_RECORDED",
+        "DISPUTE_RAISED",
         "ERRATA_ISSUED"
       ]
     },
@@ -30,9 +45,14 @@
       "type": "string",
       "enum": [
         "play_script",
-        "performance_run",
+        "source_segment",
         "consent_record",
-        "release_version"
+        "translation_candidate",
+        "cultural_note",
+        "release_version",
+        "performance_run",
+        "live_change",
+        "dispute_case"
       ]
     },
     "aggregate_id": {
@@ -52,17 +72,99 @@
     }
   },
   "payload_required_by_event": {
+    "STAGE_ADVANCED": [
+      "to_stage"
+    ],
+    "SEGMENT_ADDED": [
+      "script_ref",
+      "order",
+      "text",
+      "kind"
+    ],
+    "FACT_CONFIRMED": [
+      "segment_ref",
+      "witness"
+    ],
     "CONSENT_RECORDED": [
       "subject_ref",
-      "scope"
+      "scope",
+      "withdraw_by"
+    ],
+    "CONSENT_WITHDRAWN": [
+      "reason"
+    ],
+    "TRANSLATION_SUBMITTED": [
+      "segment_ref",
+      "language",
+      "text",
+      "translator",
+      "fingerprint"
+    ],
+    "NOTE_ADDED": [
+      "segment_ref",
+      "language",
+      "text"
+    ],
+    "VERSION_SUBMITTED": [
+      "script_ref",
+      "number",
+      "items",
+      "submitted_by"
+    ],
+    "VERSION_SIGNED": [
+      "role",
+      "signer"
+    ],
+    "VERSION_APPROVED": [
+      "number"
+    ],
+    "REHEARSAL_CONFIRMED": [
+      "confirmer"
+    ],
+    "RUN_SCHEDULED": [
+      "script_ref",
+      "starts_at",
+      "submission_cutoff"
+    ],
+    "LANGUAGE_REQUESTED": [
+      "language"
     ],
     "RUN_LOCKED": [
       "script_version",
-      "starts_at"
+      "starts_at",
+      "version_ref",
+      "fingerprint"
+    ],
+    "RUN_REVISED": [
+      "version_ref",
+      "script_version",
+      "fingerprint"
+    ],
+    "LIVE_CHANGE_RECORDED": [
+      "run_ref",
+      "segment_ref",
+      "language",
+      "text",
+      "reason",
+      "fingerprint"
+    ],
+    "RECEIPT_RECORDED": [
+      "receipt_id",
+      "version_number",
+      "fingerprint",
+      "outcome"
+    ],
+    "DISPUTE_RAISED": [
+      "run_ref",
+      "receipt_id",
+      "expected_fingerprint",
+      "actual_fingerprint"
     ],
     "ERRATA_ISSUED": [
       "supersedes",
-      "reason"
+      "reason",
+      "run_ref",
+      "errata_id"
     ]
   },
   "additionalProperties": false
